@@ -3,7 +3,8 @@ createMiniHarp = (path) ->
   app = connect()
   argv = require("minimist")(process.argv.slice(2))
   port = argv.port || 4000
-  serveStatic = require('serve-static')
+  serveStatic = require("serve-static")
+  jadePreprocessor = require("../lib/processor/jade")
 
   app
   .use((req,res,next) ->
@@ -14,10 +15,11 @@ createMiniHarp = (path) ->
       next()
     )
   .use(serveStatic(path))
+  .use(jadePreprocessor(path))
   .listen(port)
 
   console.log "Starting mini-harp on http://localhost:" + port
 
-  return
+  return app
 
 module.exports = createMiniHarp;

@@ -24,6 +24,12 @@
   "homepage": "https://github.com/geekplux/fork2-mini-harp",
   "dependencies": {
     "connect": "^3.0.0-rc.1",
-    "serve-static": "^1.0.3"
+    "serve-static": "^1.0.3",
+    "jade": "^1.3.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.18.2",
+    "supertest": "^0.12.0"
   }
 }
