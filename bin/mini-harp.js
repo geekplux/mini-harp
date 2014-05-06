@@ -1,4 +1,7 @@
 #!/usr/bin/env node
-var miniHarp = require( '../index.js' );
+var miniHarp = require( '../index.js' ),
+    argv = require("minimist")(process.argv.slice(2)),
+    root = process.cwd(); // current directory
+    path = argv._[0] || root;
 
-miniHarp();
+miniHarp(path);
