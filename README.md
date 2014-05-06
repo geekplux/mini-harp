@@ -1,4 +1,5 @@
 fork2-mini-harp
 ===============
 
-Mini Harp Static Server
+Lesson 1 - Mini Harp Static Server
+Lesson 2 - Mini Harp Preprocessors
