@@ -12,10 +12,11 @@
     jadePreprocessor = require("./lib/processor/jade");
     lessPreprocessor = require("./lib/processor/less");
     app.use(function(req, res, next) {
-      var url;
-      url = req.url.split("/");
-      if (url[1] === "current-time" && url[2] === void 0) {
+      if (req.url === "current-time") {
         return res.end((new Date()).toISOString() + "\n");
+      } else if (req.url === "/") {
+        req.url = "/index.html";
+        return next();
       } else {
         return next();
       }
