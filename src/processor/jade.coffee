@@ -12,6 +12,8 @@ makeJade = (root) ->
     file = path.join(root, req.url)
     if fs.existsSync(file)
       res.end(file)
+      return
+
     else
       file = path.join(root, path.basename(req.url, ".html") + ".jade")
 
@@ -20,19 +22,27 @@ makeJade = (root) ->
           if err
             throw err
             next()
+
           else
             jade.render(data, (err, html) ->
               if err
                 throw err
                 next()
+
               else
                 res.setHeader("Content-Length", html.length)
                 res.setHeader("Content-Type", "text/html; charset=UTF-8")
                 res.end(html)
+
+              return
             )
+          return
         )
+
       else
         res.statusCode = 404
         res.end()
+
+      return
 
 module.exports = makeJade

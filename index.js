@@ -14,15 +14,15 @@
     path = require("path");
     app.use(function(req, res, next) {
       if (req.url === "current-time") {
-        return res.end((new Date()).toISOString() + "\n");
+        res.end((new Date()).toISOString() + "\n");
       } else if (req.url === "/") {
         req.url = "/index.html";
-        return next();
+        next();
       } else if (path.extname(req.url) === ".jade" || path.extname(req.url) === ".less") {
         res.statusCode = 404;
-        return res.end();
+        res.end();
       } else {
-        return next();
+        next();
       }
     }).use(serveStatic(root)).use(jadePreprocessor(root)).use(lessPreprocessor(root)).listen(port);
     console.log("Starting mini-harp on http://localhost:" + port);

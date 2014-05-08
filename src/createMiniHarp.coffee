@@ -20,6 +20,8 @@ createMiniHarp = (root) ->
       res.end()
     else
       next()
+      
+    return
   )
   .use(serveStatic(root))
   .use(jadePreprocessor(root))
